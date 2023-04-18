@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<mavlink>
+  <include>common.xml</include>
+  <dialect>TBD</dialect>
+
+    <enums>
+        <enum name="VERONTE_ERROR">
+            <description>Codici di errore del UAV Veronte</description>
+            <entry value="0" name="FIRMWARE_VERSION_TYPE_DEV">
+            <description>development release</description>
+            </entry>
+            <entry value="64" name="FIRMWARE_VERSION_TYPE_ALPHA">
+            <description>alpha release</description>
+            </entry>
+            <entry value="128" name="FIRMWARE_VERSION_TYPE_BETA">
+            <description>beta release</description>
+            </entry>
+            <entry value="192" name="FIRMWARE_VERSION_TYPE_RC">
+            <description>release candidate</description>
+            </entry>
+            <entry value="255" name="FIRMWARE_VERSION_TYPE_OFFICIAL">
+            <description>official stable release</description>
+            </entry>
+        </enum>
+    </enums>
+
+    <messages>
+        <message id="12000" name="VERONTE_UAV_INFO">
+            <description>Veronte UAV information.</description>
+            <field type="uint16_t" name="rpm" instance="flase" units="rpm">Engine RPM</field>
+            <field type="float" name="temperature" units="°C">Temperatura del motore</field>
+            <field type="int64_t" name="MissionTime" units="s">TNumero di secondi trascorsi dall’avvio della missione (si considera a partire dal decollo)</field>
+            <field type="int64_t" name="WPTime" units="s">Numero di secondi trascorsi dall’attraversamento dell’ultimo Waypoint</field>
+        </message>
+        <message id="12001" name="VERONTE_RADIO_STATUS">
+            <description>Veronte UAV radio status information.</description>
+        </message>
+        <message id="12002" name="VERONTE_ERROR">
+            <description>Veronte UAV error information.</description>
+            <field type="uint8_t" name="target_system">Sistema che ha sollevato l'errore</field>
+            <field type="float" name="message">Messaggio di errore</field>
+            <field type="uint8_t" name="error" enum="VERONTE_ERROR">Codice errore.</field>
+        </message>
+    </messages>
+</mavlink>
