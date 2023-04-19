@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <mavlink>
-  <dialect>TBD</dialect>
-
     <enums>
         <enum name="VERONTE_ERROR">
             <description>Codici di errore del UAV Veronte</description>
