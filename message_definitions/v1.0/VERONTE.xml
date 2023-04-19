@@ -3,7 +3,7 @@
     <enums>
         <enum name="VERONTE_ERROR">
             <description>Codici di errore del UAV Veronte</description>
-            <entry value="0" name="Generic Error">
+            <entry value="0" name="Generic_Error">
             <description>Generic Error</description>
             </entry>
         </enum>
