@@ -33,6 +33,7 @@
         </message>
         <message id="12001" name="VERONTE_RADIO_STATUS">
             <description>Veronte UAV radio status information.</description>
+            <field type="uint16_t" name="placeholder" units="rpm">placeholder</field>
         </message>
         <message id="12002" name="VERONTE_ERROR">
             <description>Veronte UAV error information.</description>
