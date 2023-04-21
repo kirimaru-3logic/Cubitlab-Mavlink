@@ -1,6 +1,19 @@
 <?xml version="1.0"?>
 <mavlink>
     <enums>
+    <enum name="MAV_CMD">
+        <entry value="12003" name="VERONTE_CMD_DO_TAKE_OWNERSHIP">
+            <description>Used by a GCS to take exclusive ownership of an UAV</description>
+            <param index="1">Grounc Control Station ID</param>
+            <param index="2">UAV ID</param>
+            <param index="3">Empty</param>
+            <param index="4">Empty</param>
+            <param index="5">Empty</param>
+            <param index="6">Empty</param>
+            <param index="7">Empty</param>
+        </entry>
+    </enum>
+        
         <enum name="VERONTE_ERROR">
             <description>Codici di errore del UAV Veronte</description>
             <entry value="0" name="Generic_Error">
