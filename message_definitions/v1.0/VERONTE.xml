@@ -1,5 +1,26 @@
 <?xml version="1.0"?>
 <mavlink>
+
+    <enums>
+        <enum name="FUEL_LEVEL">
+            <description>Percentage of fuel level.</description>
+            <entry value="100" name="FULL">
+                <description>Landing target signaled by light beacon (ex: IR-LOCK)</description>
+            </entry>
+            <entry value="75" name="HIGH">
+                <description>Landing target signaled by radio beacon (ex: ILS, NDB)</description>
+            </entry>
+            <entry value="50" name="MEDIUM">
+                <description>Landing target represented by a fiducial marker (ex: ARTag)</description>
+            </entry>
+            <entry value="25" name="LOW">
+                <description>Landing target represented by a pre-defined visual shape/feature (ex: X-marker, H-marker, square)</description>
+            </entry>
+            <entry value="0" name="EMPTY">
+                <description>Landing target represented by a pre-defined visual shape/feature (ex: X-marker, H-marker, square)</description>
+            </entry>
+    </enum>
+
     <enums>
         <enum name="VERONTE_ERROR">
             <description>Codici di errore del UAV Veronte</description>
@@ -24,7 +45,7 @@
             <field type="float" name="temperature" units="°C">Temperatura del motore</field>
             <field type="int64_t" name="MissionTime" units="s">TNumero di secondi trascorsi dall’avvio della missione (si considera a partire dal decollo)</field>
             <field type="int64_t" name="WPTime" units="s">Numero di secondi trascorsi dall’attraversamento dell’ultimo Waypoint</field>
-            <field type="uint8_t" name="fuelStatus">Stato del serbatoio dell'UAV</field>
+            <field type="FUEL_LEVEL" name="fuelStatus">Stato del serbatoio dell'UAV</field>
         </message>
         <message id="12001" name="VERONTE_RADIO_STATUS">
             <description>Veronte UXV radio status information.</description>
