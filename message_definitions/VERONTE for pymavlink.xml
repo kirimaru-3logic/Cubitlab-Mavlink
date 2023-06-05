@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<mavlink>
+    <include>ardupilotmega.xml</include>
+
+    <enums>
+        <enum name="FUEL_LEVEL">
+            <description>Percentage of fuel level.</description>
+            <entry value="100" name="FULL">
+                <description>Landing target signaled by light beacon (ex: IR-LOCK)</description>
+            </entry>
+            <entry value="75" name="HIGH">
+                <description>Landing target signaled by radio beacon (ex: ILS, NDB)</description>
+            </entry>
+            <entry value="50" name="MEDIUM">
+                <description>Landing target represented by a fiducial marker (ex: ARTag)</description>
+            </entry>
+            <entry value="25" name="LOW">
+                <description>Landing target represented by a pre-defined visual shape/feature (ex: X-marker, H-marker, square)</description>
+            </entry>
+            <entry value="0" name="EMPTY">
+                <description>Landing target represented by a pre-defined visual shape/feature (ex: X-marker, H-marker, square)</description>
+            </entry>
+        </enum>
+
+        <enum name="VERONTE_ERROR">
+            <description>Codici di errore del UAV Veronte</description>
+            <entry value="0" name="Generic_Error">
+            <description>Generic Error</description>
+            </entry>
+        </enum>
+        <enum name="MAV_CMD">
+            <description>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data.</description>
+            <entry value="12003" name="VERONTE_CMD_DO_TAKE_UXV_OWNERSHIP">
+                <description>Take exclusive ownership of an UXV</description>
+                <param index="1">ID of the Ground Control Station getting the ownership.</param>
+                <param index="2">ID of the UXV to take control of.</param>
+            </entry>
+        </enum>
+    </enums>
+
+    <messages>
+        <message id="12000" name="VERONTE_UAV_INFO">
+            <description>Veronte UAV information.</description>
+            <field type="uint16_t" name="rpm" units="rpm">Engine RPM</field>
+            <field type="float" name="temperature" units="°C">Temperatura del motore</field>
+            <field type="int64_t" name="MissionTime" units="s">TNumero di secondi trascorsi dall’avvio della missione (si considera a partire dal decollo)</field>
+            <field type="int64_t" name="WPTime" units="s">Numero di secondi trascorsi dall’attraversamento dell’ultimo Waypoint</field>
+            <field type="FUEL_LEVEL" name="fuelStatus">Stato del serbatoio dell'UAV</field>
+        </message>
+        <message id="12001" name="VERONTE_RADIO_STATUS">
+            <description>Veronte UXV radio status information.</description>
+            <field type="uint16_t" name="placeholder" units="rpm">placeholder</field>
+        </message>
+        <message id="12002" name="VERONTE_ERROR">
+            <description>Veronte UAV error information.</description>
+            <field type="uint8_t" name="target_system">Sistema che ha sollevato l'errore</field>
+            <field type="float" name="message">Messaggio di errore</field>
+            <field type="uint8_t" name="error" enum="VERONTE_ERROR">Codice errore.</field>
+        </message>
+        <message id="12004" name="VERONTE_NAVE_STATUS">
+            <description>Nave status.</description>
+            <field type="uint16_t" name="placeholder" units="rpm">placeholder</field>
+        </message>
+    </messages>
+</mavlink>
